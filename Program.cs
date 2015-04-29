@@ -26,7 +26,8 @@ namespace ExtractIssuesFromAsana
             //Console.ReadKey();
 
             var httpClient = new HttpClient();
-            var url = "http://youtrack.brightsolid.com/rest/admin/permission";
+            var url = "http://youtrack.brightsolid.com/rest/project/all?true";
+            //var url = "http://youtrack.brightsolid.com/rest/issue/byproject/TST?filter=%23Show-stopper";
             var request = new HttpRequestMessage(HttpMethod.Get, url);
             AddYouTrackHeaders(request);
             var response = httpClient.SendAsync(request).Result;
@@ -35,7 +36,7 @@ namespace ExtractIssuesFromAsana
             var oMycustomclassname = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(result);
             foreach (dynamic o in oMycustomclassname)
             {
-                Console.WriteLine(o.name);
+                //Console.WriteLine(o.name);
             }
             Console.WriteLine(result);
             Console.ReadKey();
